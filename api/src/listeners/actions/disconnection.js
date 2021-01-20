@@ -11,8 +11,8 @@ export default class Disconnection {
 
             if (userLefts) {
                 return [
-                    MessageEvent.broadCastToChatRoomLeft(socketServer, user),
-                    RoomCheckEvent.checkRoomsForUsersInside(socketServer, user)
+                    MessageEvent.broadCastToChatRoomLeft(socketServer, userLefts),
+                    RoomCheckEvent.checkRoomsForUsersInside(socketServer, userLefts)
                 ]
             }
         })
