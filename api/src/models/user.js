@@ -4,5 +4,4 @@ export default class User {
         this.username = username
         this.chatroom = chatroom
     }
-
 }

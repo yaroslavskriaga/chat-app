@@ -6,12 +6,7 @@ const userList = document.getElementById('users')
 
 
 socket.on('message', message => {
-    console.log(message)
-
     outputMessage(message)
-
-    chatMessages.scrollTop = chatMessages.scrollHeight
-
 })
 
 chatForm.addEventListener('submit', (e) => {
@@ -36,6 +31,8 @@ function outputMessage(message) {
                 </p>
         `
     document.querySelector('.chat-messages').appendChild(div)
+
+    chatMessages.scrollTop = chatMessages.scrollHeight
 }
 
 const {username, chatroom} = Qs.parse(location.search, {
@@ -50,11 +47,9 @@ socket.on('roomUsers', ({chatroom, users}) => {
 })
 
 
-console.log(username, chatroom)
 
 function outputRoomName(chatroom) {
     roomName.innerText = chatroom
-
 }
 
 function outputUsers(users) {

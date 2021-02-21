@@ -16,12 +16,10 @@ export default class JoinRoom {
                 MessageEvent.botWelcomeMessage(socket),
                 RoomCheckEvent.checkRoomsForUsersInside(socketServer, user)
             ]
-
         })
     }
 
     addUser(socket_id, username, chatroom) {
         return UserController.addUser(socket_id, username, chatroom)
     }
-
 }

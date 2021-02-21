@@ -9,6 +9,7 @@ export default class MessageEvent {
 
     static userMessage(msg, socketServer, socket_id) {
         const user = this.getUser(socket_id)
+
         socketServer.emit('message',
             new Message(user.username, msg))
     }
@@ -33,7 +34,6 @@ export default class MessageEvent {
     }
 
     static phraseGenerator(phrase, username) {
-        return phrase.replace(/\bNICKNAME\b/g, username)
+        return phrase.replace(/\bUSER\b/g, username)
     }
-
 }

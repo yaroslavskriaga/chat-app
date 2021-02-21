@@ -11,7 +11,9 @@ export default class UserController {
      **/
     static addUser(id, username, chatroom) {
         const user = new User(id, username, chatroom)
+
         users.push(user)
+
         return user
     }
 
@@ -29,6 +31,7 @@ export default class UserController {
      **/
     static deleteUser(id) {
         const index = users.findIndex(user => user.id === id)
+
         if (index !== -1) {
             return users.splice(index, 1)[0]
         }

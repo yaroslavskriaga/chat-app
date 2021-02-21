@@ -6,5 +6,4 @@ export default class Message {
         this.text = text
         this.time = moment().format('h:mm a')
     }
-
 }

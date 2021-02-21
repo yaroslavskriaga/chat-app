@@ -7,5 +7,4 @@ export default class UserChatMessage {
             return MessageEvent.userMessage(msg, socketServer, socket.id)
         })
     }
-
 }

@@ -3,7 +3,15 @@ export const config = {
         port: 3000,
         botName: 'Admin',
         welcomeMessage: 'Welcome to chat app!',
-        someoneJoinedChatMessage: 'NICKNAME joined the chat',
-        someoneLeftChatMessage: 'NICKNAME has left the chat'
+        // USER is a placeholder
+        someoneJoinedChatMessage: 'USER joined the chat',
+        someoneLeftChatMessage: 'USER has left the chat'
+    },
+    chat:{
+
+    },
+    cors:{
+        origin: 'http://localhost:4200',
+        credentials: true
     }
 }
