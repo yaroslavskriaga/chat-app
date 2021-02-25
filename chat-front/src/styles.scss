@@ -1,4 +1,27 @@
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import '~@angular/material/theming';
+
+// Include non-theme styles for core.
+@include mat-core();
+
+// Define a theme.
+$primary: mat-palette($mat-deep-purple);
+
+
+$accent: mat-palette($mat-red);
+$grey: mat-palette($mat-grey);
+
+
+$theme: mat-light-theme($primary, $accent);
+
+
+// Include all theme styles for the components.
+@include angular-material-theme($theme);
+
+// Background
+
+.mat-card .mat-divider-horizontal {
+  display: none;
+}
 
 html {
   background: url("/assets/background.jpg") no-repeat center center fixed;
@@ -8,11 +31,132 @@ html {
   background-size: cover;
 }
 
+.room-name-box {
+  margin-bottom: 20px;
+
+  img {
+    margin-right: 5px;
+  }
+}
+
+// Grid
+
+.d-flex {
+  display: flex;
+
+  &.justify-content-between {
+    justify-content: space-between;
+  }
+
+  &.align-center {
+    align-items: center;
+  }
+
+}
+
+.mr-right-10 {
+  margin-right: 10px;
+}
+
+// Button submit message
+
+button {
+  img {
+    width: 20px;
+    margin-left: 10px;
+  }
+}
+
+
+button.btn-submit {
+  margin: 26px;
+  height: 36px;
+
+}
+
+button.btn-logout {
+  &:hover {
+    background: mat-color($accent, 200);
+  }
+
+}
+
+
+// Message body
+
+.meta {
+  font-size: 12px;
+  margin-bottom: 15px;
+
+  span {
+    opacity: 0.5;
+  }
+}
+
+// Mat card message
+
+.message-card {
+  margin-bottom: 13px;
+
+  &.my-message {
+    width: 75%;
+  }
+
+  &.alien-message {
+    width: 75%;
+    margin-left: auto;
+  }
+
+  &.system-message {
+    background: aquamarine;
+    padding: 10px 16px;
+    margin-bottom: 10px;
+    width: 99%;
+
+    p.meta {
+      margin-bottom: 10px;
+    }
+
+    span {
+      display: none;
+    }
+  }
+}
+
+.users-header {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.user-online-icon {
+  width: 10px;
+  margin-right: 5px;
+}
+
+// Mat card header
+
+mat-card.header-card {
+  background: mat-color($grey, 500);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+
+  .chat img {
+    margin-right: 10px;
+
+  }
+
+  .chat {
+    &:hover {
+      filter: invert(56%) sepia(90%) saturate(6834%) hue-rotate(327deg) brightness(103%) contrast(101%);
+      cursor: pointer;
+    }
+  }
+}
 
 
 //TO DELETE TEST//
 
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 :root {
   --dark-color-a: #667aff;
@@ -22,55 +166,14 @@ html {
   --error-color: #d9534f;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
-  font-size: 16px;
-  background: var(--light-color);
-  margin: 20px;
-}
-
-ul {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-}
-
-.btn {
-  cursor: pointer;
-  padding: 5px 15px;
-  background: var(--light-color);
-  color: var(--dark-color-a);
-  border: 0;
-  font-size: 17px;
-}
-
-/* Chat Page */
 
 .chat-container {
   max-width: 1100px;
-  background: #fff;
+  background: grey;
   margin: 30px auto;
   overflow: hidden;
 }
 
-.chat-header {
-  background: var(--dark-color-a);
-  color: #fff;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  padding: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
 .chat-main {
   display: grid;
@@ -78,17 +181,9 @@ a {
 }
 
 .chat-sidebar {
-  background: var(--dark-color-b);
   color: #fff;
   padding: 20px 20px 60px;
   overflow-y: scroll;
-}
-
-.chat-sidebar h2 {
-  font-size: 20px;
-  background: rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  margin-bottom: 20px;
 }
 
 .chat-sidebar h3 {
@@ -125,8 +220,7 @@ a {
 }
 
 .chat-form-container {
-  padding: 20px 30px;
-  background-color: var(--dark-color-a);
+  margin-top: 10px;
 }
 
 .chat-form-container form {
@@ -193,11 +287,11 @@ a {
 }
 
 @media (max-width: 700px) {
-  .chat-main {
+
+  .divider {
     display: block;
   }
-
-  .chat-sidebar {
-    display: none;
+  .chat-main {
+    display: block;
   }
 }

@@ -5,9 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from '@app/core/core.module';
-import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
   declarations: [
@@ -18,8 +17,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     AppRoutingModule,
     LayoutsModule,
     BrowserAnimationsModule,
+    MatSnackBarModule,
     CoreModule.forRoot(),
-    SocketIoModule.forRoot(config)
   ],
   providers: [],
   bootstrap: [AppComponent]

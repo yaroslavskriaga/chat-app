@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SessionService } from '@app/core/services/session.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,19 +11,25 @@ import { SessionService } from '@app/core/services/session.service';
 export class LoginPageComponent implements OnInit {
   public form = new FormGroup({
     username: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
+    chatroom: new FormControl('', Validators.required),
   });
 
-  constructor(private sessionService: SessionService) {
+  constructor(private sessionService: SessionService, private router: Router) {
   }
 
   ngOnInit(): void {
   }
 
   public submit(): void {
-    console.log(this.form.value)
-    this.sessionService.set('username', this.form.get('username').value)
-    this.sessionService.set('password', this.form.get('password').value)
+    this.sessionService.setValue('username', this.form.get('username').value)
+    this.sessionService.setValue('chatroom', this.form.get('chatroom').value)
+    this.sessionService.setValue('access', true)
+
+    this.navigateDashboard();
+  }
+
+  private navigateDashboard() {
+    this.router.navigate(['/dashboard']).then()
   }
 
 }

@@ -1,29 +1,26 @@
 import { Injectable } from '@angular/core';
-import { UserModel } from '@app/models/user.model';
+import { SessionStorageService } from 'ngx-webstorage';
+
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class SessionService {
-  public userModel = new UserModel();
 
 
-  constructor() {
+  constructor(private storage: SessionStorageService) {
   }
 
-  public set(key: string, value: string) {
-    this.userModel[key] = value;
+  public setValue(key: any, value: any) {
+    this.storage.store(key, value);
   }
 
-  public get(key: string): string {
-    return this.userModel[key]
+  public getValueByKey(key: string): any {
+    return this.storage.retrieve(key);
   }
 
-  public remove(key: string) {
-    this.userModel[key] = null;
-  }
-
-  public clear() {
-    this.userModel = new UserModel();
+  public clearStorage() {
+    this.storage.clear();
   }
 }

@@ -1,33 +1,49 @@
-<div class="chat-container">
-    <header class="chat-header">
-        <h1><i class="fas fa-smile"></i> ChatCord</h1>
-        <a href="index.html" class="btn">Leave Room</a>
-    </header>
+<mat-card class="chat-container">
+    <mat-card class="header-card">
+        <div (click)="pageReload()" class="chat d-flex align-center">
+            <img src="./assets/chat_app.svg" alt="">
+            <div class="chat-text">Chat</div>
+        </div>
+        <button (click)="logout()" class="btn-logout" mat-button>Leave room<img src="./assets/mdi_logout.svg" alt="">
+        </button>
+    </mat-card>
     <main class="chat-main">
         <div class="chat-sidebar">
-            <h3><i class="fas fa-comments"></i> Room Name:</h3>
-            <h2 id="room-name"></h2>
-            <h3><i class="fas fa-users"></i> Users</h3>
-            <ul id="users">
-
-            </ul>
+            <div class="room-name-box">
+                <div class="users-header">Room Name:</div>
+                <div class="d-flex align-center">
+                    <img src="./assets/ic_outline-door-back.svg" alt="">
+                    {{ ChatRoom | async }}
+                </div>
+            </div>
+            <div class="users-online-box">
+                <div class="users-header">Users online:</div>
+                <div *ngFor="let user of (Users | async)">
+                    <img class="user-online-icon" src="./assets/twemoji_green-circle.svg" alt="">
+                    {{ user }}
+                </div>
+            </div>
         </div>
-        <div class="chat-messages">
-
-        </div>
+        <mat-divider class="divider" [inset]="true"></mat-divider>
+        <div #chatMessagesContainer class="chat-messages"></div>
     </main>
-    <div class="chat-form-container">
-        <form [formGroup]="form" (ngSubmit)="printMessage($event)" id="chat-form">
-            <label for="msg"></label><input
-                id="msg"
-                type="text"
-                placeholder="Enter Message"
-                required
-                autocomplete="off"
-                formControlName="message"
-                #inputMessage
-        />
-            <button class="btn"><i class="fas fa-paper-plane"></i> Send</button>
+    <mat-card class="chat-form-container">
+        <form class="d-flex justify-content-between" [formGroup]="newMessageForm" (ngSubmit)="printMessage($event)"
+              id="chat-form">
+            <mat-form-field style="width: 100%">
+                <label>
+                    <textarea #inputMessage
+                              (keydown.enter)="printMessage($event);false"
+                              formControlName="message"
+                              type="text"
+                              matInput
+                              placeholder="Enter message...">
+                    </textarea>
+                </label>
+            </mat-form-field>
+            <button class="btn-submit" mat-raised-button (click)="printMessage($event)" mat-button>Send<img
+                    class="mr-right-10" src="./assets/mdi_send-circle-outline.svg" alt=""></button>
         </form>
-    </div>
-</div>
+    </mat-card>
+</mat-card>
+
