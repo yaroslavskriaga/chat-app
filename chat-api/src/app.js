@@ -53,8 +53,8 @@ class Main {
         try {
             this.server.listen(config.app.port)
             console.log(`Server running on port ${config.app.port}`)
-        } catch (e) {
-            console.error(`[ERROR], ${e}`)
+        } catch (error) {
+            console.error(`[ERROR], ${error}`)
         }
     }
 
