@@ -1,0 +1,19 @@
+@import "components/buttons";
+@import "components/divider";
+@import "components/typography";
+@import "abstracts/variables";
+@import "abstracts/grid";
+
+html {
+  background: url("../../src/assets/background.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: 'Roboto', sans-serif;
+}
+
+p {
+  margin: 0;
+}
+

@@ -4,6 +4,16 @@ import { AppModule } from '@app/app.module';
 import { environment } from '@env/environment';
 import { hmrBootstrap } from './hmr';
 
+/**
+ *
+ * Author: Yaroslav Skriaga
+ * Date: 27.02.2021
+ *
+ *
+ * Entry file
+ *
+ **/
+
 if (environment.production) {
   enableProdMode();
 }

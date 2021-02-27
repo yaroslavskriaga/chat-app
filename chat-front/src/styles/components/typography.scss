@@ -1,0 +1,23 @@
+@import "../abstracts/variables";
+
+// Mat card message
+p.meta {
+  font-size: 12px;
+  margin-bottom: 15px;
+
+  span {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: $screen-md) {
+  p.meta {
+    font-size: 11px;
+    margin-bottom: 10px;
+  }
+
+  p.text {
+    font-size: 14px;
+  }
+
+}

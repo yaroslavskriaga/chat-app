@@ -11,24 +11,23 @@ import { MessageInterface } from '@app/models/message.interface';
 export class ChatService {
   private readonly socket: Socket;
 
-
   constructor() {
     this.socket = io(environment.socketServer);
   }
 
-  public chatMessage(message: string) {
+  public sendMessage(message: string) {
     this.socket.emit('ChatMessage', message);
   }
 
-  public message(): Observable<MessageInterface> {
+  public messageListener(): Observable<MessageInterface> {
     return new Observable(observer => {
-      this.socket.on('message', msg => {
-        observer.next(msg);
+      this.socket.on('message', message => {
+        observer.next(message);
       });
     });
   }
 
-  public roomCheckIn(): Observable<CheckInInterface> {
+  public roomCheckInListener(): Observable<CheckInInterface> {
     return new Observable((observer) => {
       this.socket.on('roomUsers', (roomUsers: CheckInInterface) => {
         observer.next(roomUsers);
@@ -41,11 +40,11 @@ export class ChatService {
   }
 
   public disconnect(): Socket {
-    return this.socket.disconnect()
+    return this.socket.disconnect();
   }
 
   public connect(): Socket {
-    return this.socket.connect()
+    return this.socket.connect();
   }
 
 }

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SessionService } from '@app/core/services/session.service';
-import { Router } from '@angular/router';
+import { removeSpaces } from '@app/shared/utils/input-validate-whitespace';
+
 
 @Component({
   selector: 'app-login',
@@ -9,10 +11,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginPageComponent implements OnInit {
-  public form = new FormGroup({
-    username: new FormControl('', Validators.required),
-    chatroom: new FormControl('', Validators.required),
+  public loginForm = new FormGroup({
+    username: new FormControl('', [Validators.required, removeSpaces]),
+    chatroom: new FormControl('', [Validators.required]),
   });
+
+  get formIsValid() {
+    return this.loginForm.valid;
+  }
 
   constructor(private sessionService: SessionService, private router: Router) {
   }
@@ -20,16 +26,19 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public submit(): void {
-    this.sessionService.setValue('username', this.form.get('username').value)
-    this.sessionService.setValue('chatroom', this.form.get('chatroom').value)
-    this.sessionService.setValue('access', true)
 
+  public submit(): void {
+    if (this.loginForm.get('username').value.length === 0) {
+      return;
+    }
+    this.sessionService.setValue('username', this.loginForm.get('username').value);
+    this.sessionService.setValue('chatroom', this.loginForm.get('chatroom').value);
+    this.sessionService.setValue('access', true);
     this.navigateDashboard();
   }
 
   private navigateDashboard() {
-    this.router.navigate(['/dashboard']).then()
+    this.router.navigate(['/dashboard']).then();
   }
 
 }

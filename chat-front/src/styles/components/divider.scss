@@ -1,0 +1,12 @@
+@import "../abstracts/variables";
+
+.mat-card .mat-divider-horizontal {
+  display: none;
+}
+
+
+@media (max-width: $screen-md) {
+  .mat-card .mat-divider-horizontal {
+    display: block;
+  }
+}

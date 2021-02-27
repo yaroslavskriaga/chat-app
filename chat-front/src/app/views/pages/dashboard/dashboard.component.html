@@ -4,20 +4,24 @@
             <img src="./assets/chat_app.svg" alt="">
             <div class="chat-text">Chat</div>
         </div>
-        <button (click)="logout()" class="btn-logout" mat-button>Leave room<img src="./assets/mdi_logout.svg" alt="">
+        <button (click)="logout()"
+                class="btn-logout"
+                mat-button>
+            Leave room
+            <img src="./assets/mdi_logout.svg" alt="">
         </button>
     </mat-card>
     <main class="chat-main">
         <div class="chat-sidebar">
             <div class="room-name-box">
-                <div class="users-header">Room Name:</div>
+                <div class="chat-sidebar-section">Room Name:</div>
                 <div class="d-flex align-center">
                     <img src="./assets/ic_outline-door-back.svg" alt="">
                     {{ ChatRoom | async }}
                 </div>
             </div>
             <div class="users-online-box">
-                <div class="users-header">Users online:</div>
+                <div class="chat-sidebar-section">Users online:</div>
                 <div *ngFor="let user of (Users | async)">
                     <img class="user-online-icon" src="./assets/twemoji_green-circle.svg" alt="">
                     {{ user }}
@@ -28,12 +32,14 @@
         <div #chatMessagesContainer class="chat-messages"></div>
     </main>
     <mat-card class="chat-form-container">
-        <form class="d-flex justify-content-between" [formGroup]="newMessageForm" (ngSubmit)="printMessage($event)"
+        <form class="d-flex justify-content-between"
+              [formGroup]="newMessageForm"
+              (ngSubmit)="printMessage()"
               id="chat-form">
-            <mat-form-field style="width: 100%">
+            <mat-form-field>
                 <label>
                     <textarea #inputMessage
-                              (keydown.enter)="printMessage($event);false"
+                              (keydown.enter)="printMessage();false"
                               formControlName="message"
                               type="text"
                               matInput
@@ -41,8 +47,13 @@
                     </textarea>
                 </label>
             </mat-form-field>
-            <button class="btn-submit" mat-raised-button (click)="printMessage($event)" mat-button>Send<img
-                    class="mr-right-10" src="./assets/mdi_send-circle-outline.svg" alt=""></button>
+            <button class="btn-submit"
+                    mat-raised-button
+                    (click)="printMessage()"
+                    mat-button>
+                Send
+                <img src="./assets/mdi_send-circle-outline.svg" alt="">
+            </button>
         </form>
     </mat-card>
 </mat-card>

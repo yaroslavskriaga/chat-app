@@ -1,0 +1,49 @@
+@import "../abstracts/variables";
+
+button {
+  img {
+    width: 20px;
+    margin-left: 10px;
+  }
+}
+
+button.btn-submit {
+  align-self: center;
+  margin-top: 10px;
+  margin-left: 10px;
+  height: 36px;
+}
+
+
+button.btn-logout {
+  &:hover {
+    background: mat-color($accent, 200);
+  }
+}
+
+@media (max-width: $screen-md) {
+  button.btn-logout {
+    font-size: 12px !important;
+    left: 15px;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: $screen-md) {
+  button.btn-submit {
+    padding: 0 5px;
+    align-self: auto;
+    font-size: 12px !important;;
+  }
+
+  button {
+    img {
+      margin-left: 0;
+      width: 15px;
+    }
+  }
+}
+
+.mat-raised-button {
+  padding: 0 5px;
+}

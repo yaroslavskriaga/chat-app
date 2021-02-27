@@ -6,22 +6,22 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 
 const routes: Routes = [{path: '', component: LoginPageComponent}];
 
 @NgModule({
   declarations: [LoginPageComponent],
-    imports: [
-        CommonModule,
-        RouterModule.forChild(routes),
-        MatCardModule,
-        MatInputModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatButtonModule,
-        MatSelectModule,
-    ],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    MatCardModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatSelectModule,
+  ],
   providers: [],
 })
 
