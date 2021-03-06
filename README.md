@@ -4,6 +4,8 @@
 ````
  1. Install [Node.js](https://nodejs.org) version 14.15.4
  2. Install [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0
+ 3. Current build is Heroku-adapted versions of API+Client autodeployed from private repos
+ 4. Test it here https://angularfront01.herokuapp.com/
 ````
 
 ## API CHAT-API
