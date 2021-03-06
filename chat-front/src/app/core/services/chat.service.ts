@@ -9,9 +9,13 @@ import { MessageInterface } from '@app/models/message.interface';
   providedIn: 'root'
 })
 export class ChatService {
-  private readonly socket: Socket;
+  private socket: Socket;
 
   constructor() {
+    this.initializeSocket()
+  }
+
+  private initializeSocket(): void {
     this.socket = io(environment.socketServer);
   }
 

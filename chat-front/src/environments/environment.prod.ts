@@ -1,3 +1,6 @@
 export const environment = {
-  production: true
+  socketServer:'http://localhost:3000',
+  production: true,
+  dev: false,
+  hmr: true,
 };

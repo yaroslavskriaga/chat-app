@@ -21,4 +21,3 @@
 2. Start for development - npm run start
 3. Production build - npm run build
 ````
-Try out :) - https://angularfront01.herokuapp.com/ 
