@@ -1,4 +1,4 @@
-### Socket.io based chat powered by Node.js and ES6 OOP Syntax
+### Socket.io based chat powered by Node.js
 
 ## Deployment + Setup
 ````
